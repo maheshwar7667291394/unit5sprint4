@@ -1,0 +1,149 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mahesh;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_mahesh |
++------------------+
+| borrow           |
+| branch           |
+| customer         |
+| deposite         |
++------------------+
+4 rows in set (0.90 sec)
+
+mysql> create table student(name varchar(24),roll int,branch varchar(20),city varchar(20));
+Query OK, 0 rows affected (0.95 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(24) | YES  |     | NULL    |       |
+| roll   | int         | YES  |     | NULL    |       |
+| branch | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.08 sec)
+
+mysql> insert into student values('vijaya',150,'chenai');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student values('vijaya',150,'cse','chenai');
+Query OK, 1 row affected (0.09 sec)
+
+mysql>  insert into student values('sita',200,'etc','kolkata'),('ravi',300,'eee','delhi'),('basu',165,'etc','chenai');
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into student values('rasmi',107,'etc','rkl'),('karan',111,'cse','ctc'),('rekha',177,'bme','bbsr');
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select *from student;
++--------+------+--------+---------+
+| name   | roll | branch | city    |
++--------+------+--------+---------+
+| vijaya |  150 | cse    | chenai  |
+| sita   |  200 | etc    | kolkata |
+| ravi   |  300 | eee    | delhi   |
+| basu   |  165 | etc    | chenai  |
+| rasmi  |  107 | etc    | rkl     |
+| karan  |  111 | cse    | ctc     |
+| rekha  |  177 | bme    | bbsr    |
++--------+------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select count from student group by branch;
+ERROR 1054 (42S22): Unknown column 'count' in 'field list'
+mysql> select count(branch) from student group by branch;
++---------------+
+| count(branch) |
++---------------+
+|             2 |
+|             3 |
+|             1 |
+|             1 |
++---------------+
+4 rows in set (0.09 sec)
+
+mysql> select branch,count(branch) from student group by branch;
++--------+---------------+
+| branch | count(branch) |
++--------+---------------+
+| cse    |             2 |
+| etc    |             3 |
+| eee    |             1 |
+| bme    |             1 |
++--------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select branch,count(name) from student group by branch;
++--------+-------------+
+| branch | count(name) |
++--------+-------------+
+| cse    |           2 |
+| etc    |           3 |
+| eee    |           1 |
+| bme    |           1 |
++--------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(branch) from student where branch like 'e%';
++---------------+
+| count(branch) |
++---------------+
+|             4 |
++---------------+
+1 row in set (0.07 sec)
+
+mysql> alter table student marks int;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks int' at line 1
+mysql> alter table student add marks int;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(24) | YES  |     | NULL    |       |
+| roll   | int         | YES  |     | NULL    |       |
+| branch | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
+| marks  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.07 sec)
+
+mysql> alter table student modify name varchar(25);
+Query OK, 0 rows affected (0.18 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> delete from student where branch='etc';
+Query OK, 3 rows affected (0.19 sec)
+
+mysql> select *from student;
++--------+------+--------+--------+-------+
+| name   | roll | branch | city   | marks |
++--------+------+--------+--------+-------+
+| vijaya |  150 | cse    | chenai |  NULL |
+| ravi   |  300 | eee    | delhi  |  NULL |
+| karan  |  111 | cse    | ctc    |  NULL |
+| rekha  |  177 | bme    | bbsr   |  NULL |
++--------+------+--------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student rename student formaton;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'formaton' at line 1
+mysql>

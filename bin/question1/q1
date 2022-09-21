@@ -1,0 +1,443 @@
+
+
+ create table deposite(actno varchar(25),cname varchar(25),bname varchar(25), amount int ,date date);
+ 
+ 
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> desc deposite;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| actno  | varchar(25) | YES  |     | NULL    |       |
+| cname  | varchar(25) | YES  |     | NULL    |       |
+| bname  | varchar(25) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
+| date   | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.14 sec)
+
+
+
+
+
+mysql> create table branch
+    -> (
+    -> bname varchar(25),
+    -> city varchar(25)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc branch;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bname | varchar(25) | YES  |     | NULL    |       |
+| city  | varchar(25) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+mysql> create table CUSTOMER
+    -> (
+    -> cname varchar(25),
+    -> city varchar(25)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> desc customer;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cname | varchar(25) | YES  |     | NULL    |       |
+| city  | varchar(25) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+
+
+
+mysql> create table borrow
+    -> (
+    -> loanno varchar(5),
+    -> cname varchar(20),
+    -> bname varchar(20),
+    -> amount int
+    -> );
+Query OK, 0 rows affected (0.90 sec)
+
+mysql> desc borrow;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| loanno | varchar(5)  | YES  |     | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| bname  | varchar(20) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+mysql> insert into deposite values(100,'anil','vrce',1000,'2008-11-11');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into deposite values(100,'anil','vrce',1000,'2008-11-11');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into deposite values(100,'anil','vrce',1000,'1986-03-01');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into deposite values(101,'sunil','mgroad',5000,'1995-01-04');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into deposite values(102,'rahul','karolbagh',3500,'1995-11-17');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into table values(103,'madhuri','chandani',1200,'95-10-17');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table values(103,'madhuri','chandani',1200,'95-10-17')' at line 1
+mysql>  insert into deposite values(104,'parmod','mgroad',3000,'1996-03-27');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into deposite values(105,'sandip','karolbagh',2000,'1996-04-31');
+ERROR 1292 (22007): Incorrect date value: '1996-04-31' for column 'date' at row 1
+mysql> insert into deposite values(105,'sandip','karolbagh',2000,'1996-03-31');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> desc deposite;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| actno  | varchar(25) | YES  |     | NULL    |       |
+| cname  | varchar(25) | YES  |     | NULL    |       |
+| bname  | varchar(25) | YES  |     | NULL    |       |
+| amount | int         | YES  |     | NULL    |       |
+| date   | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.05 sec)
+
+
+
+insert into branch values('vrce','nagpur'),('karolbagh','delhi'),('chandani','delhi'),('mgroad','banglore');
+Query OK, 4 rows affected (3.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> desc branch;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bname | varchar(25) | YES  |     | NULL    |       |
+| city  | varchar(25) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.42 sec)
+
+
+
+
+
+insert into customer values('anil','culcuta'),('rahul','baroda'),('madhuri','nagpur'),('parmod','nagpur'),('sunil','delhi');
+Query OK, 5 rows affected (0.11 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+
+
+mysql> insert into borrow  values('311','sunil','mgroad',3000),('321','madhuri','chandani',2000),('375','parmod','mgroad',8000);
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+
+
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| evaluation         |
+| information_schema |
+| mahesh             |
+| mysql              |
+| org                |
+| performance_schema |
+| person             |
+| sys                |
++--------------------+
+8 rows in set (0.15 sec)
+
+mysql> use mahesh;
+Database changed
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++------------------+
+| Tables_in_mahesh |
++------------------+
+| borrow           |
+| branch           |
+| customer         |
+| deposite         |
++------------------+
+4 rows in set (0.11 sec)
+
+mysql> insert into borrow  values('311','sunil','mgroad',3000),('321','madhuri','chandani',2000),('375','parmod','mgroad',8000);
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> select *from borrow where amount between 2000 and 3000;
++--------+---------+----------+--------+
+| loanno | cname   | bname    | amount |
++--------+---------+----------+--------+
+| 311    | sunil   | mgroad   |   3000 |
+| 321    | madhuri | chandani |   2000 |
++--------+---------+----------+--------+
+2 rows in set (0.07 sec)
+
+mysql> select *from deposite;
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 1986-03-01 |
+| 101   | sunil  | mgroad    |   5000 | 1995-01-04 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 104   | parmod | mgroad    |   3000 | 1996-03-27 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+8 rows in set (0.05 sec)
+
+mysql> select cname,actno from deposite;
++--------+-------+
+| cname  | actno |
++--------+-------+
+| anil   | 100   |
+| anil   | 100   |
+| anil   | 100   |
+| anil   | 100   |
+| sunil  | 101   |
+| rahul  | 102   |
+| parmod | 104   |
+| sandip | 105   |
++--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select name from deposite where date>'1995-11-17';
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select cname from deposite where date>'1995-11-17';
++--------+
+| cname  |
++--------+
+| anil   |
+| anil   |
+| anil   |
+| parmod |
+| sandip |
++--------+
+5 rows in set (0.08 sec)
+
+mysql> select actno,amount from deposite where date batween '1995-12-01' and '1995-11-17';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'batween '1995-12-01' and '1995-11-17'' at line 1
+mysql> select actno,amount from deposite where date between '1995-12-01' and '1995-11-17';
+Empty set (0.00 sec)
+
+mysql> select actno,amount from deposite where date between '1995-12-01' and '1996-11-17';
++-------+--------+
+| actno | amount |
++-------+--------+
+| 104   |   3000 |
+| 105   |   2000 |
++-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select cname from depostite where cname like 'c%';
+ERROR 1146 (42S02): Table 'mahesh.depostite' doesn't exist
+mysql> select cname from deposite where cname like 'c%';
+Empty set (0.00 sec)
+
+mysql> select cname from deposite where cname like 's%';
++--------+
+| cname  |
++--------+
+| sunil  |
+| sandip |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select *from borrow;
++--------+---------+-----------+--------+
+| loanno | cname   | bname     | amount |
++--------+---------+-----------+--------+
+| 201    | anil    | vrce      |   1000 |
+| 206    | rahul   | karolbagh |   5000 |
+| 311    | sunil   | mgroad    |   3000 |
+| 321    | madhuri | chandani  |   2000 |
+| 375    | parmod  | mgroad    |   8000 |
++--------+---------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select cname from borrow where cname like '-a%';
+Empty set (0.00 sec)
+
+mysql> select cname from borrow where cname like '_a%';
++---------+
+| cname   |
++---------+
+| rahul   |
+| madhuri |
+| parmod  |
++---------+
+3 rows in set (0.00 sec)
+
+mysql> select *from deposite where not bname='chandni';
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 1986-03-01 |
+| 101   | sunil  | mgroad    |   5000 | 1995-01-04 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 104   | parmod | mgroad    |   3000 | 1996-03-27 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+8 rows in set (0.05 sec)
+
+mysql> select *from deposite where not bname='chandani' and not bname='mgroad';
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 1986-03-01 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from deposite group by cname asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select *from deposite group by cname desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc' at line 1
+mysql>  select *from deposite order by cname asc;
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 2008-11-11 |
+| 100   | anil   | vrce      |   1000 | 1986-03-01 |
+| 104   | parmod | mgroad    |   3000 | 1996-03-27 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
+| 101   | sunil  | mgroad    |   5000 | 1995-01-04 |
++-------+--------+-----------+--------+------------+
+8 rows in set (0.07 sec)
+
+mysql> select *from deposite order by cname where amount>100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where amount>100' at line 1
+mysql> select *from deposite where amount>1000;
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 101   | sunil  | mgroad    |   5000 | 1995-01-04 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 104   | parmod | mgroad    |   3000 | 1996-03-27 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select *from deposite order by cname where amount>1000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where amount>1000' at line 1
+mysql> select *from deposite where amount>1000 order by cname;
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 104   | parmod | mgroad    |   3000 | 1996-03-27 |
+| 102   | rahul  | karolbagh |   3500 | 1995-11-17 |
+| 105   | sandip | karolbagh |   2000 | 1996-03-31 |
+| 101   | sunil  | mgroad    |   5000 | 1995-01-04 |
++-------+--------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> seelct *from borrow where cname like '__%a' or cname like '__%d';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seelct *from borrow where cname like '__%a' or cname like '__%d'' at line 1
+mysql> select *from borrow where cname like '__%a' or cname like '__%d';
++--------+--------+--------+--------+
+| loanno | cname  | bname  | amount |
++--------+--------+--------+--------+
+| 375    | parmod | mgroad |   8000 |
++--------+--------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> seelct *from borrow where cname like '__a%' or cname like '__d%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seelct *from borrow where cname like '__a%' or cname like '__d%'' at line 1
+mysql> select *from borrow where cname like '__a%' or cname like '__d%';
++--------+---------+----------+--------+
+| loanno | cname   | bname    | amount |
++--------+---------+----------+--------+
+| 321    | madhuri | chandani |   2000 |
++--------+---------+----------+--------+
+1 row in set (0.06 sec)
+
+mysql> seelct distinct from deposite;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seelct distinct from deposite' at line 1
+mysql> seelct distinct(cnaem),distinct(bname) from deposite;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seelct distinct(cnaem),distinct(bname) from deposite' at line 1
+mysql> select distinct(cnaem),distinct(bname) from deposite;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(bname) from deposite' at line 1
+mysql> select distinct(cnaem,bname) from deposite;
+ERROR 1054 (42S22): Unknown column 'cnaem' in 'field list'
+mysql> select distinct(cname,bname) from deposite;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql>  select distinct(cname), distinct(bname) from deposite;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(bname) from deposite' at line 1
+mysql> select distinct cname from deposite;
++--------+
+| cname  |
++--------+
+| anil   |
+| sunil  |
+| rahul  |
+| parmod |
+| sandip |
++--------+
+5 rows in set (0.08 sec)
+
+mysql> update deposite set amount=amount+amount*0.1;
+Query OK, 8 rows affected (0.09 sec)
+Rows matched: 8  Changed: 8  Warnings: 0
+
+mysql> select deposite;
+ERROR 1054 (42S22): Unknown column 'deposite' in 'field list'
+mysql> select *from deposite;
++-------+--------+-----------+--------+------------+
+| actno | cname  | bname     | amount | date       |
++-------+--------+-----------+--------+------------+
+| 100   | anil   | vrce      |   1100 | 2008-11-11 |
+| 100   | anil   | vrce      |   1100 | 2008-11-11 |
+| 100   | anil   | vrce      |   1100 | 2008-11-11 |
+| 100   | anil   | vrce      |   1100 | 1986-03-01 |
+| 101   | sunil  | mgroad    |   5500 | 1995-01-04 |
+| 102   | rahul  | karolbagh |   3850 | 1995-11-17 |
+| 104   | parmod | mgroad    |   3300 | 1996-03-27 |
+| 105   | sandip | karolbagh |   2200 | 1996-03-31 |
++-------+--------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql>
